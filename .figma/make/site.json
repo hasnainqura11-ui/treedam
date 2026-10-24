@@ -1,10 +1,17 @@
 {
-  "description": "Create stunning, responsive websites with precise UI designs, ensuring seamless functionality across all devices for businesses seeking a polished online presence.",
+  "description": "Plant trees and prove they survive. TREEDAM offers GPS-tagged planting, AI survival checks and care reminders for planters, NGOs and forest departments.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
     "ignoreReducedMotion": false
+  },
+  "title": "TREEDAM | Grow Forests, Breathe Fresh Air",
+  "icons": {
+    "icon": "/favicon.ico"
+  },
+  "openGraph": {
+    "image": "https://app-yia6nxavslsubsgopso3pga6rb4zofxbam7hhlqp7pzod2fjr6lu.makeproxy-c.figma.site/treedam-logo.png"
   }
 }
