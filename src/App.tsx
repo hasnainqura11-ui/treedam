@@ -4,6 +4,7 @@ import { Layout, TopNavbar } from './components/Layout'
 import { HeroSection } from './components/HeroSection'
 import { TreedamLogo } from './components/BrandIcons'
 import { TreeDashboard } from './components/TreeDashboard'
+import { MapPin, Camera, Leaf, ChartNoAxesColumn, type LucideIcon } from 'lucide-react'
 import { ContentPage, PricingPage, AccountPage, ContactPage, NotFoundPage, InformationPage } from './components/Pages'
 
 type ModalKind = 'trial' | 'sales' | 'signin' | 'contact' | null
@@ -127,14 +128,14 @@ function ProjectCards() {
   return (
     <div className="project-visual">
       <div className="stack stack-left">
-        <span>△ &nbsp; Google Maps</span>
-        <span>◆ &nbsp; WhatsApp</span>
-        <span>▣ &nbsp; Weather</span>
+        <span><MapPin size={12} className="inline-block" aria-hidden="true" /> &nbsp; Google Maps</span>
+        <span><Camera size={12} className="inline-block" aria-hidden="true" /> &nbsp; WhatsApp</span>
+        <span><Leaf size={12} className="inline-block" aria-hidden="true" /> &nbsp; Weather</span>
         <small>Tag, track, update trees</small>
       </div>
       <div className="integration-card">
-        <div><i className="purple-dot" /> Camera</div>
-        <div><i className="slack-dot" /> GPS</div>
+        <div><Camera className="purple-dot" aria-hidden="true" /> Camera</div>
+        <div><MapPin className="slack-dot" aria-hidden="true" /> GPS</div>
         <small>For planter updates and real-time alerts</small>
         <button>Manage</button>
       </div>
@@ -260,12 +261,12 @@ function Home() {
           </div>
         </div>
         <div className="integration-list">
-          {[
-            ['✣', 'Maps', 'See every planted tree located precisely on live maps, updated in real time.'],
-            ['N', 'Reports', 'Organize drives, keep records, and manage all your plantation work from one place.'],
-            ['✺', 'Alerts', 'Get care reminders and stay on track, moving forward with confidence.'],
-          ].map(([icon, name, text]) => (
-            <article key={name}><span>{icon}</span><div><h3>{name}</h3><p>{text}</p></div></article>
+          {([
+            [MapPin, 'Maps', 'See every planted tree located precisely on live maps, updated in real time.'],
+            [ChartNoAxesColumn, 'Reports', 'Organize drives, keep records, and manage all your plantation work from one place.'],
+            [Leaf, 'Alerts', 'Get care reminders and stay on track, moving forward with confidence.'],
+          ] satisfies [LucideIcon, string, string][]).map(([Icon, name, text]) => (
+            <article key={name}><span><Icon size={23} aria-hidden="true" /></span><div><h3>{name}</h3><p>{text}</p></div></article>
           ))}
         </div>
       </section>

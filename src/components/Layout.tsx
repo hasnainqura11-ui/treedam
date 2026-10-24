@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import {
-  TreedamLogo,
-  SlackLogo,
-  NotionLogo,
-  LoomLogo,
-  GoogleDriveLogo,
-} from './BrandIcons'
+import { TreedamLogo } from './BrandIcons'
+import { TreePine, Trophy, Leaf, MapPin, ChartNoAxesColumn, TreeDeciduous } from 'lucide-react'
 
 export type ModalType = 'trial' | 'sales' | 'demo' | null
 
@@ -308,7 +303,7 @@ export function TopNavbar() {
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-[#EEF0FF] text-[#5B68FF] flex items-center justify-center shrink-0 mt-0.5 font-semibold text-xs">
-                    ⌘
+                    <TreePine size={16} aria-hidden="true" />
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111] group-hover:text-[#4F5EFF]">
@@ -324,7 +319,7 @@ export function TopNavbar() {
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-[#E9FBF3] text-[#18A96B] flex items-center justify-center shrink-0 mt-0.5 font-semibold text-xs">
-                    ◎
+                    <Trophy size={16} aria-hidden="true" />
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111] group-hover:text-[#18A96B]">
@@ -340,7 +335,7 @@ export function TopNavbar() {
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-[#FDF0F7] text-[#E6499B] flex items-center justify-center shrink-0 mt-0.5 font-semibold text-xs">
-                    ✦
+                    <Leaf size={16} aria-hidden="true" />
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111] group-hover:text-[#E6499B]">
@@ -362,7 +357,7 @@ export function TopNavbar() {
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-white border border-[#ECEEF2] shadow-2xs flex items-center justify-center shrink-0 mt-0.5">
-                    <SlackLogo size={16} />
+                    <MapPin size={16} className="text-[#36C5F0]" aria-hidden="true" />
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111]">Maps & Photo Sync</p>
@@ -376,7 +371,7 @@ export function TopNavbar() {
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-white border border-[#ECEEF2] shadow-2xs flex items-center justify-center shrink-0 mt-0.5">
-                    <NotionLogo size={16} />
+                    <ChartNoAxesColumn size={16} className="text-[#191919]" aria-hidden="true" />
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111]">Reports & Data Hub</p>
@@ -390,7 +385,7 @@ export function TopNavbar() {
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-white border border-[#ECEEF2] shadow-2xs flex items-center justify-center shrink-0 mt-0.5">
-                    <GoogleDriveLogo size={16} />
+                    <TreeDeciduous size={16} className="text-[#0F9D58]" aria-hidden="true" />
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111]">About TREEDAM</p>
@@ -407,7 +402,7 @@ export function TopNavbar() {
                     <span className="px-2 py-0.5 rounded-md bg-white/90 text-[#4F5EFF] text-[10px] font-semibold border border-[#DCE1FF]">
                       44% Die Unverified
                     </span>
-                    <LoomLogo size={18} />
+                    <TreeDeciduous size={18} className="text-[#625DF5]" aria-hidden="true" />
                   </div>
                   <h4 className="text-[14px] font-semibold text-[#111] tracking-tight">
                     Your all-in-one tree survival workspace

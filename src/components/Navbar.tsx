@@ -19,9 +19,12 @@ import {
   X,
   Command,
   FileText,
-  Bot
+  Bot,
+  MapPin,
+  Camera,
+  Leaf
 } from 'lucide-react';
-import { TreedamLogo, SlackLogo, NotionLogo, LoomLogo } from './BrandIcons';
+import { TreedamLogo } from './BrandIcons';
 
 export type PageView =
   | 'home'
@@ -531,13 +534,13 @@ export function Navbar({
                 >
                   <div className="flex items-center gap-1.5 mb-2.5">
                     <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center">
-                      <SlackLogo className="w-4 h-4" />
+                      <MapPin className="w-4 h-4 text-[#36C5F0]" aria-hidden="true" />
                     </div>
                     <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center">
-                      <NotionLogo className="w-4 h-4" />
+                      <Camera className="w-4 h-4 text-[#191919]" aria-hidden="true" />
                     </div>
                     <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center">
-                      <LoomLogo className="w-4 h-4" />
+                      <Leaf className="w-4 h-4 text-[#625DF5]" aria-hidden="true" />
                     </div>
                   </div>
                   <div className="text-[14px] font-bold text-[#090a0f]">

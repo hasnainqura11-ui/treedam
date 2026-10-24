@@ -5,7 +5,6 @@ import {
   GmailLogo,
   GoogleGLogo,
   TrustpilotStar,
-  NotionLogo,
 } from './BrandIcons';
 
 interface HeroSectionProps {
