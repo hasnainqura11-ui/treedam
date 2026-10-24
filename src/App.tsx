@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router'
 import { Layout, TopNavbar } from './components/Layout'
 import { HeroSection } from './components/HeroSection'
 import { TreedamLogo } from './components/BrandIcons'
+import { TreeDashboard } from './components/TreeDashboard'
 import { ContentPage, PricingPage, AccountPage, ContactPage, NotFoundPage, InformationPage } from './components/Pages'
 
 type ModalKind = 'trial' | 'sales' | 'signin' | 'contact' | null
@@ -146,46 +147,6 @@ function ProjectCards() {
   )
 }
 
-function Dashboard() {
-  const cards = ['To Plant', 'Still Growing', 'Verify', 'Verified']
-  return (
-    <div className="dashboard">
-      <aside>
-        <Brand />
-        <span>▦ &nbsp; Dashboard</span>
-        <span>⌕ &nbsp; Explore</span>
-        <span>▣ &nbsp; Trees</span>
-        <span>◇ &nbsp; Analytics</span>
-      </aside>
-      <div className="dash-main">
-        <div className="dash-top">
-          <b>Dashboard</b>
-          <span>⌕ &nbsp; Search</span>
-          <span>● &nbsp; ◌</span>
-        </div>
-        <h3>Checklist - To Plant</h3>
-        <p>All the trees you must care for, in one place.</p>
-        <div className="kanban">
-          {cards.map((card, index) => (
-            <div className="kanban-col" key={card}>
-              <b>{card}</b>
-              <small>{['120 trees', '340 trees', '85 trees', '960 trees'][index]}</small>
-              <article>
-                <i className={`label label-${index}`} />
-                <strong>{['Chinar plot', 'Watering round', 'Survival photo check', 'Forest certified'][index]}</strong>
-                <p>Tracked by GPS and cared for by planters.</p>
-                <span>○ ○ ○</span>
-              </article>
-              <article className="muted-card">
-                <strong>{['Mango plot', 'Fertilizer day', 'Drone survey', 'Carbon report'][index]}</strong>
-              </article>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function Home() {
   const navigate = useNavigate()
@@ -318,7 +279,7 @@ function Home() {
             <Button secondary onClick={() => openModal('sales')}>Talk to our team</Button>
           </div>
         </div>
-        <Dashboard />
+        <TreeDashboard />
       </section>
 
       <section className="final-cta" id="insight">
@@ -334,7 +295,7 @@ function Home() {
 
 const router = createBrowserRouter([{ Component: Layout, children: [
   { index: true, Component: Home },
-  ...['products', 'product', 'services', 'service', 'solutions', 'solution', 'strategy', 'insight', 'about'].map(path => ({ path, element: <ContentPage kind={path} /> })),
+  ...['platform', 'products', 'product', 'plans', 'services', 'service', 'solutions', 'solution', 'impact', 'strategy', 'insight', 'about'].map(path => ({ path, element: <ContentPage kind={path} /> })),
   { path: 'pricing', Component: PricingPage },
   { path: 'signup', element: <AccountPage mode="signup" /> },
   { path: 'signin', element: <AccountPage mode="signin" /> },

@@ -87,11 +87,11 @@ export function Layout() {
               <div className="md:col-span-2 space-y-2.5">
                 <h4 className="text-[12px] font-semibold text-[#111113] tracking-tight">Product</h4>
                 <ul className="space-y-2 text-[12px] text-[#6E6F77]">
-                  <li><Link to="/products" className="hover:text-[#111] transition">Platform Overview</Link></li>
+                  <li><Link to="/platform" className="hover:text-[#111] transition">Platform Overview</Link></li>
                   <li><Link to="/solutions" className="hover:text-[#111] transition">Tree Tracking</Link></li>
-                  <li><Link to="/services" className="hover:text-[#111] transition">Care Plans <span className="text-[9px] text-[#4F60FF] border border-[#C6CEFF] bg-[#F2F4FF] px-1 py-0.5 rounded ml-1 font-semibold">NEW</span></Link></li>
+                  <li><Link to="/plans" className="hover:text-[#111] transition">Care Plans <span className="text-[9px] text-[#4F60FF] border border-[#C6CEFF] bg-[#F2F4FF] px-1 py-0.5 rounded ml-1 font-semibold">NEW</span></Link></li>
                   <li><Link to="/pricing" className="hover:text-[#111] transition">Pricing Plans</Link></li>
-                  <li><Link to="/insight" className="hover:text-[#111] transition">Impact &amp; Insights</Link></li>
+                  <li><Link to="/impact" className="hover:text-[#111] transition">Impact &amp; Insights</Link></li>
                 </ul>
               </div>
 
@@ -101,8 +101,8 @@ export function Layout() {
                   <li><Link to="/solutions" className="hover:text-[#111] transition">Plantation Planning</Link></li>
                   <li><Link to="/solutions" className="hover:text-[#111] transition">Team Competitions</Link></li>
                   <li><Link to="/solutions" className="hover:text-[#111] transition">AI Survival Checks</Link></li>
-                  <li><Link to="/insight" className="hover:text-[#111] transition">Use Cases</Link></li>
-                  <li><Link to="/services" className="hover:text-[#111] transition">Institutions</Link></li>
+                  <li><Link to="/impact" className="hover:text-[#111] transition">Use Cases</Link></li>
+                  <li><Link to="/plans" className="hover:text-[#111] transition">Institutions</Link></li>
                 </ul>
               </div>
 
@@ -173,7 +173,7 @@ export function Layout() {
                       }}
                       className="h-10 px-5 rounded-[10px] bg-[#0F0F12] text-white text-[12px] font-medium"
                     >
-                      Go to Workspace Setup
+                      Explore Planting Setup
                     </button>
                   </div>
                 </div>
@@ -182,15 +182,15 @@ export function Layout() {
                   <TreedamLogo size="sm" />
                   <h3 className="mt-5 text-[24px] font-semibold tracking-[-0.03em] text-[#111]">
                     {modal === 'trial'
-                      ? 'Start your 14-day free trial'
+                      ? 'Start your planting journey'
                       : modal === 'demo'
                       ? 'Book a personalized demo'
                       : 'Talk to our sales team'}
                   </h3>
                   <p className="mt-1.5 text-[12.5px] text-[#6E6F77]">
                     {modal === 'trial'
-                      ? 'Get instant access to AI-powered task management for your whole team.'
-                      : 'See how TREEDAM delivers 384% ROI and saves 5+ hours every week.'}
+                      ? 'Explore GPS tree tagging, care reminders, and tree-survival evidence for your planting community.'
+                      : 'Explore care plans and survival verification for your next plantation drive.'}
                   </p>
                   <form
                     onSubmit={(e) => {
@@ -213,14 +213,14 @@ export function Layout() {
                     />
                     <input
                       type="text"
-                      placeholder="Company name & team size"
+                      placeholder="Institution & planting team size"
                       className="w-full h-10 px-3.5 rounded-[10px] border border-[#E5E6EB] bg-[#FAFAFC] text-[12.5px] focus:bg-white focus:border-[#111] outline-none"
                     />
                     <button
                       type="submit"
                       className="w-full h-10 rounded-[10px] bg-[#0F0F12] text-white text-[12.5px] font-medium hover:bg-black transition shadow-sm"
                     >
-                      {modal === 'trial' ? 'Start Free Trial' : modal === 'demo' ? 'Schedule Demo' : 'Contact Sales'}
+                      {modal === 'trial' ? 'Start Planting Free' : modal === 'demo' ? 'Schedule Demo' : 'Talk to our team'}
                     </button>
                   </form>
                 </>
@@ -258,8 +258,8 @@ export function TopNavbar() {
 
         {/* Center: Desktop Nav Links */}
         <nav className="hidden lg:flex items-center gap-7" aria-label="Main Navigation">
-          <NavLink to="/products" className={navLinkClass}>
-            Products
+          <NavLink to="/platform" className={navLinkClass}>
+            Platform
           </NavLink>
 
           {/* Solutions with Luxury Hover Mega Menu */}
@@ -336,7 +336,7 @@ export function TopNavbar() {
                   </div>
                 </Link>
                 <Link
-                  to="/insight"
+                  to="/impact"
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-[#FDF0F7] text-[#E6499B] flex items-center justify-center shrink-0 mt-0.5 font-semibold text-xs">
@@ -358,7 +358,7 @@ export function TopNavbar() {
                   Partners & Teams
                 </p>
                 <Link
-                  to="/products"
+                  to="/platform"
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-white border border-[#ECEEF2] shadow-2xs flex items-center justify-center shrink-0 mt-0.5">
@@ -372,7 +372,7 @@ export function TopNavbar() {
                   </div>
                 </Link>
                 <Link
-                  to="/products"
+                  to="/platform"
                   className="group flex items-start gap-3 p-2.5 rounded-[12px] hover:bg-[#F6F7FB] transition"
                 >
                   <span className="w-8 h-8 rounded-[9px] bg-white border border-[#ECEEF2] shadow-2xs flex items-center justify-center shrink-0 mt-0.5">
@@ -434,9 +434,9 @@ export function TopNavbar() {
             </div>
           </div>
 
-          <NavLink to="/services" className={navLinkClass}>
+          <NavLink to="/plans" className={navLinkClass}>
             <span className="inline-flex items-center gap-1.5">
-              Services
+              Plans
               <span className="text-[8.5px] font-bold tracking-wider uppercase px-1.5 py-[1px] rounded-[4px] bg-[#EEF1FF] text-[#4E60FF] border border-[#BBC5FF]">
                 NEW
               </span>
@@ -447,8 +447,8 @@ export function TopNavbar() {
             Pricing
           </NavLink>
 
-          <NavLink to="/strategy" className={navLinkClass}>
-            Strategy
+          <NavLink to="/impact" className={navLinkClass}>
+            Impact
           </NavLink>
 
           <NavLink to="/about" className={navLinkClass}>
@@ -491,15 +491,15 @@ export function TopNavbar() {
             <Link to="/" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
               Home
             </Link>
-            <Link to="/products" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
-              Products
+            <Link to="/platform" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
+              Platform
             </Link>
             <Link to="/solutions" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50 flex items-center justify-between">
               <span>Solutions</span>
-              <span className="text-[11px] text-indigo-600 font-medium">Explore workflows →</span>
+              <span className="text-[11px] text-indigo-600 font-medium">Explore tree survival →</span>
             </Link>
-            <Link to="/services" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50 flex items-center gap-2">
-              <span>Services</span>
+            <Link to="/plans" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50 flex items-center gap-2">
+              <span>Plans</span>
               <span className="text-[8.5px] font-bold uppercase px-1.5 py-[1px] rounded bg-[#EEF1FF] text-[#4E60FF] border border-[#BBC5FF]">
                 NEW
               </span>
@@ -507,8 +507,8 @@ export function TopNavbar() {
             <Link to="/pricing" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
               Pricing
             </Link>
-            <Link to="/insight" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
-              Strategy & Insight
+            <Link to="/impact" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
+              Impact
             </Link>
             <Link to="/about" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
               About Us
@@ -528,7 +528,7 @@ export function TopNavbar() {
               to="/signup"
               className="h-9 rounded-[9px] bg-[#0F0F12] text-white text-[12px] font-medium flex items-center justify-center"
             >
-              Start Free Trial
+              Start Planting Free
             </Link>
           </div>
         </div>

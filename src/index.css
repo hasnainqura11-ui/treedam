@@ -144,6 +144,78 @@
   .page-section { padding: 55px 22px; }.section-heading { margin-bottom: 35px; }.section-heading p br { display: none; }.benefit-grid { grid-template-columns: 1fr; gap: 10px; }.benefit-grid article { padding: 22px 12px; }.benefit-grid article:nth-child(odd) { border-right: 0; }.workspace-glow,.manage-layout,.organize { grid-template-columns: 1fr; gap: 35px; }.workspace-glow { padding: 15px 0; }.stats { grid-template-columns: repeat(2,1fr); gap: 30px; padding: 35px 25px; }.project-visual { grid-template-columns: 1fr; padding: 25px; gap: 25px; }.project-points { grid-template-columns: 1fr; gap: 25px; }.project-points article { padding: 20px 0; border-bottom: 1px solid #f0f0f2; }.organize { gap: 25px; }.dashboard { overflow-x: auto; }.dash-main { min-width: 430px; }.dashboard aside { width: 100px; }.detail-grid { grid-template-columns: 1fr; padding: 0 22px 40px; }.page-intro { padding: 60px 22px 40px; }.integration-feature { grid-template-columns: 1fr; padding: 30px 22px; gap: 25px; }.account-layout { grid-template-columns: 1fr; padding: 50px 22px; gap: 35px; }.account-card { padding: 25px; }.inner-page { padding-bottom: 25px; }.benefits { border-radius: 0; }
 }
 
+/* Linked pages compose the home page's existing sections and palette. */
+.treedam-pages .page-hero-media {
+  @apply mx-auto w-11/12 max-w-6xl;
+}
+.treedam-pages .page-media-grid {
+  @apply grid grid-cols-1 gap-4 md:grid-cols-3;
+}
+.treedam-pages .page-media-grid > .field-media:first-child {
+  @apply md:col-span-2;
+}
+.treedam-pages .page-media-grid > .field-media {
+  @apply h-full;
+}
+.treedam-pages .field-media {
+  @apply relative isolate overflow-hidden rounded-2xl border border-slate-100 bg-slate-50;
+  min-height: 16rem;
+}
+.treedam-pages .field-media img,
+.treedam-pages .field-media video {
+  @apply block h-full w-full object-cover;
+  aspect-ratio: 16 / 10;
+}
+.treedam-pages .field-media figcaption {
+  @apply absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 border-t border-white/80 bg-white/95 px-4 py-3 text-xs text-slate-500;
+}
+.treedam-pages .field-media figcaption small {
+  @apply mt-1 block text-xs text-slate-400;
+}
+.treedam-pages .field-media figcaption .btn {
+  @apply shrink-0;
+}
+.treedam-pages .page-detail-grid {
+  @apply p-0;
+}
+.treedam-pages .page-detail-grid > div {
+  @apply h-full;
+}
+.treedam-pages .page-feature-card,
+.treedam-pages .pricing-grid article {
+  @apply h-full transition-transform duration-200 hover:-translate-y-1;
+}
+.treedam-pages .benefit-grid > div:nth-child(even) article {
+  border-right: 0;
+}
+.treedam-pages .page-editorial {
+  @apply p-0;
+}
+.treedam-pages .page-editorial h2 {
+  @apply mt-4;
+}
+.treedam-pages .page-editorial .field-media {
+  @apply h-full;
+}
+.treedam-pages .page-stats {
+  @apply grid-cols-1 gap-8 p-0 text-center sm:grid-cols-3;
+}
+.treedam-pages .care-checklist {
+  @apply mt-6 space-y-3 text-xs text-slate-500;
+}
+.treedam-pages .page-journey-stats {
+  @apply mx-auto mt-10 w-11/12 max-w-4xl pb-4;
+}
+.treedam-pages .care-checklist p {
+  @apply flex items-center gap-2;
+}
+.treedam-pages .contact-intro-title {
+  @apply mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl;
+}
+.treedam-pages .contact-intro-copy {
+  @apply mt-5 text-sm leading-relaxed text-slate-500;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
