@@ -1,0 +1,10 @@
+{
+  "description": "Create stunning, responsive websites with precise UI designs, ensuring seamless functionality across all devices for businesses seeking a polished online presence.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
