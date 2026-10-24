@@ -54,12 +54,12 @@ export function Layout() {
                   <TreedamLogo />
                 </Link>
                 <p className="text-[13px] text-[#72737A] leading-relaxed max-w-xs">
-                  From small tasks to complex projects, manage everything in one place and keep your team moving forward.
+                  From one seedling to whole forests, track every tree in one place and keep the planet breathing.
                 </p>
                 <div className="pt-2">
                   <p className="text-[12px] font-semibold text-[#111113] mb-2">Subscribe to our newsletter</p>
                   <p className="text-[11px] text-[#85868E] mb-3">
-                    Tips for faster task tracking, and smarter workflows.
+                    Tips for faster tree tracking, and smarter planting.
                   </p>
                   <form
                     onSubmit={(e) => {
@@ -71,7 +71,7 @@ export function Layout() {
                     <input
                       type="email"
                       required
-                      placeholder="Enter your work email"
+                      placeholder="Enter your email address"
                       className="h-9 px-3.5 rounded-[9px] border border-[#E5E6EB] text-[12px] bg-[#FAFAFC] focus:bg-white focus:border-[#111] outline-none flex-1"
                     />
                     <button
@@ -87,22 +87,22 @@ export function Layout() {
               <div className="md:col-span-2 space-y-2.5">
                 <h4 className="text-[12px] font-semibold text-[#111113] tracking-tight">Product</h4>
                 <ul className="space-y-2 text-[12px] text-[#6E6F77]">
-                  <li><Link to="/products" className="hover:text-[#111] transition">Products Overview</Link></li>
-                  <li><Link to="/solutions" className="hover:text-[#111] transition">Task Management</Link></li>
-                  <li><Link to="/services" className="hover:text-[#111] transition">Services <span className="text-[9px] text-[#4F60FF] border border-[#C6CEFF] bg-[#F2F4FF] px-1 py-0.5 rounded ml-1 font-semibold">NEW</span></Link></li>
+                  <li><Link to="/products" className="hover:text-[#111] transition">Platform Overview</Link></li>
+                  <li><Link to="/solutions" className="hover:text-[#111] transition">Tree Tracking</Link></li>
+                  <li><Link to="/services" className="hover:text-[#111] transition">Care Plans <span className="text-[9px] text-[#4F60FF] border border-[#C6CEFF] bg-[#F2F4FF] px-1 py-0.5 rounded ml-1 font-semibold">NEW</span></Link></li>
                   <li><Link to="/pricing" className="hover:text-[#111] transition">Pricing Plans</Link></li>
-                  <li><Link to="/insight" className="hover:text-[#111] transition">Strategy & Insight</Link></li>
+                  <li><Link to="/insight" className="hover:text-[#111] transition">Impact &amp; Insights</Link></li>
                 </ul>
               </div>
 
               <div className="md:col-span-2 space-y-2.5">
                 <h4 className="text-[12px] font-semibold text-[#111113] tracking-tight">Solutions</h4>
                 <ul className="space-y-2 text-[12px] text-[#6E6F77]">
-                  <li><Link to="/solutions" className="hover:text-[#111] transition">Project Planning</Link></li>
-                  <li><Link to="/solutions" className="hover:text-[#111] transition">Team Alignment</Link></li>
-                  <li><Link to="/solutions" className="hover:text-[#111] transition">AI Search Strategy</Link></li>
-                  <li><Link to="/insight" className="hover:text-[#111] transition">User cases</Link></li>
-                  <li><Link to="/services" className="hover:text-[#111] transition">Enterprise</Link></li>
+                  <li><Link to="/solutions" className="hover:text-[#111] transition">Plantation Planning</Link></li>
+                  <li><Link to="/solutions" className="hover:text-[#111] transition">Team Competitions</Link></li>
+                  <li><Link to="/solutions" className="hover:text-[#111] transition">AI Survival Checks</Link></li>
+                  <li><Link to="/insight" className="hover:text-[#111] transition">Use Cases</Link></li>
+                  <li><Link to="/services" className="hover:text-[#111] transition">Institutions</Link></li>
                 </ul>
               </div>
 
@@ -111,8 +111,8 @@ export function Layout() {
                 <ul className="space-y-2 text-[12px] text-[#6E6F77]">
                   <li><Link to="/about" className="hover:text-[#111] transition">About Us</Link></li>
                   <li><Link to="/contact" className="hover:text-[#111] transition">Contact Us</Link></li>
-                  <li><Link to="/insight" className="hover:text-[#111] transition">Customer Stories</Link></li>
-                  <li><Link to="/about" className="hover:text-[#111] transition">Careers</Link></li>
+                  <li><Link to="/stories" className="hover:text-[#111] transition">Planter Stories</Link></li>
+                  <li><Link to="/careers" className="hover:text-[#111] transition">Careers</Link></li>
                 </ul>
               </div>
 
@@ -120,9 +120,9 @@ export function Layout() {
                 <h4 className="text-[12px] font-semibold text-[#111113] tracking-tight">Account</h4>
                 <ul className="space-y-2 text-[12px] text-[#6E6F77]">
                   <li><Link to="/signin" className="hover:text-[#111] transition">Sign in</Link></li>
-                  <li><Link to="/signup" className="hover:text-[#111] transition">Sign up free</Link></li>
+                  <li><Link to="/signup" className="hover:text-[#111] transition">Start planting free</Link></li>
                   <li><button onClick={() => openModal('demo')} className="hover:text-[#111] transition">Book a Demo</button></li>
-                  <li><button onClick={() => openModal('sales')} className="hover:text-[#111] transition">Talk to sales</button></li>
+                  <li><button onClick={() => openModal('sales')} className="hover:text-[#111] transition">Talk to us</button></li>
                 </ul>
               </div>
             </div>
@@ -130,9 +130,9 @@ export function Layout() {
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#94959E]">
               <p>© 2026 TREEDAM Inc. All rights reserved.</p>
               <div className="flex items-center gap-6">
-                <Link to="/about" className="hover:text-[#111] transition">Privacy Policy</Link>
-                <Link to="/about" className="hover:text-[#111] transition">Terms of Service</Link>
-                <Link to="/contact" className="hover:text-[#111] transition">Security</Link>
+                <Link to="/privacy" className="hover:text-[#111] transition">Privacy Policy</Link>
+                <Link to="/terms" className="hover:text-[#111] transition">Terms of Service</Link>
+                <Link to="/security" className="hover:text-[#111] transition">Security</Link>
               </div>
             </div>
           </footer>
@@ -301,7 +301,7 @@ export function TopNavbar() {
             >
               <div className="col-span-4 space-y-1">
                 <p className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9496A1]">
-                  By Workflow
+                  By Purpose
                 </p>
                 <Link
                   to="/solutions"
@@ -312,10 +312,10 @@ export function TopNavbar() {
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111] group-hover:text-[#4F5EFF]">
-                      Task & Project Tracking
+                      Tree & Forest Tracking
                     </p>
                     <p className="text-[11px] text-[#7A7B85] leading-snug mt-0.5">
-                      Turn complex roadmaps into completed daily tasks
+                      Turn planting drives into verified living forests
                     </p>
                   </div>
                 </Link>
@@ -328,10 +328,10 @@ export function TopNavbar() {
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111] group-hover:text-[#18A96B]">
-                      Team Alignment & Goals
+                      Team Competitions & Goals
                     </p>
                     <p className="text-[11px] text-[#7A7B85] leading-snug mt-0.5">
-                      Keep everyone on the same page with real-time updates
+                      Keep every planter motivated together with live leaderboard updates
                     </p>
                   </div>
                 </Link>
@@ -344,10 +344,10 @@ export function TopNavbar() {
                   </span>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111] group-hover:text-[#E6499B]">
-                      AI Search & Strategy
+                      AI Survival & Care
                     </p>
                     <p className="text-[11px] text-[#7A7B85] leading-snug mt-0.5">
-                      Discover high-value prompts & automate routine work
+                      Detect weak trees early & automate reminders
                     </p>
                   </div>
                 </Link>
@@ -355,7 +355,7 @@ export function TopNavbar() {
 
               <div className="col-span-4 space-y-1 border-l border-[#F1F2F6] pl-4">
                 <p className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9496A1]">
-                  Integrations & Teams
+                  Partners & Teams
                 </p>
                 <Link
                   to="/products"
@@ -365,9 +365,9 @@ export function TopNavbar() {
                     <SlackLogo size={16} />
                   </span>
                   <div>
-                    <p className="text-[12.5px] font-semibold text-[#111]">Slack & Loom Sync</p>
+                    <p className="text-[12.5px] font-semibold text-[#111]">Maps & Photo Sync</p>
                     <p className="text-[11px] text-[#7A7B85] leading-snug mt-0.5">
-                      Instant channel updates & async video meetings
+                      Instant tree updates & live photo verification
                     </p>
                   </div>
                 </Link>
@@ -379,9 +379,9 @@ export function TopNavbar() {
                     <NotionLogo size={16} />
                   </span>
                   <div>
-                    <p className="text-[12.5px] font-semibold text-[#111]">Notion & Drive Hub</p>
+                    <p className="text-[12.5px] font-semibold text-[#111]">Reports & Data Hub</p>
                     <p className="text-[11px] text-[#7A7B85] leading-snug mt-0.5">
-                      Create and update pages, PDFs & design specs
+                      Create and download reports, PDFs & impact summaries
                     </p>
                   </div>
                 </Link>
@@ -395,7 +395,7 @@ export function TopNavbar() {
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#111]">About TREEDAM</p>
                     <p className="text-[11px] text-[#7A7B85] leading-snug mt-0.5">
-                      Trusted by 200,000+ users worldwide
+                      Made for everyone who plants
                     </p>
                   </div>
                 </Link>
@@ -405,15 +405,15 @@ export function TopNavbar() {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2 py-0.5 rounded-md bg-white/90 text-[#4F5EFF] text-[10px] font-semibold border border-[#DCE1FF]">
-                      384% 3-Year ROI
+                      44% Die Unverified
                     </span>
                     <LoomLogo size={18} />
                   </div>
                   <h4 className="text-[14px] font-semibold text-[#111] tracking-tight">
-                    Your all-in-one task management workspace
+                    Your all-in-one tree survival workspace
                   </h4>
                   <p className="text-[11px] text-[#656774] mt-1.5 leading-relaxed">
-                    Save 5+ hours every week and reach full payback in under 6 months.
+                    Plant it, track it, verify alive and show real proof in 30 days.
                   </p>
                 </div>
                 <div className="pt-4 flex items-center justify-between border-t border-white/70">
@@ -421,7 +421,7 @@ export function TopNavbar() {
                     to="/signup"
                     className="text-[11.5px] font-semibold text-[#111] hover:text-[#4F5EFF] inline-flex items-center gap-1"
                   >
-                    Start Free Trial <span>→</span>
+                    Start Planting Free <span>→</span>
                   </Link>
                   <Link
                     to="/solutions"

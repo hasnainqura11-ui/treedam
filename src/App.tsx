@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router'
 import { Layout, TopNavbar } from './components/Layout'
 import { HeroSection } from './components/HeroSection'
 import { TreedamLogo } from './components/BrandIcons'
-import { ContentPage, PricingPage, AccountPage, ContactPage, NotFoundPage } from './components/Pages'
+import { ContentPage, PricingPage, AccountPage, ContactPage, NotFoundPage, InformationPage } from './components/Pages'
 
 type ModalKind = 'trial' | 'sales' | 'signin' | 'contact' | null
 
@@ -147,14 +147,14 @@ function ProjectCards() {
 }
 
 function Dashboard() {
-  const cards = ['To Do', 'In Progress', 'Review', 'Done']
+  const cards = ['To Plant', 'Still Growing', 'Verify', 'Verified']
   return (
     <div className="dashboard">
       <aside>
         <Brand />
         <span>▦ &nbsp; Dashboard</span>
         <span>⌕ &nbsp; Explore</span>
-        <span>▣ &nbsp; Tasks</span>
+        <span>▣ &nbsp; Trees</span>
         <span>◇ &nbsp; Analytics</span>
       </aside>
       <div className="dash-main">
@@ -163,21 +163,21 @@ function Dashboard() {
           <span>⌕ &nbsp; Search</span>
           <span>● &nbsp; ◌</span>
         </div>
-        <h3>Checklist - To Do</h3>
-        <p>All the things you have to do, in one place.</p>
+        <h3>Checklist - To Plant</h3>
+        <p>All the trees you must care for, in one place.</p>
         <div className="kanban">
           {cards.map((card, index) => (
             <div className="kanban-col" key={card}>
               <b>{card}</b>
-              <small>{index + 2} tasks</small>
+              <small>{['120 trees', '340 trees', '85 trees', '960 trees'][index]}</small>
               <article>
                 <i className={`label label-${index}`} />
-                <strong>{['Build wireframes', 'Weekly planning', 'Landing page copy', 'Final review'][index]}</strong>
-                <p>Collaborate with the team and keep everything moving.</p>
+                <strong>{['Chinar plot', 'Watering round', 'Survival photo check', 'Forest certified'][index]}</strong>
+                <p>Tracked by GPS and cared for by planters.</p>
                 <span>○ ○ ○</span>
               </article>
               <article className="muted-card">
-                <strong>{['User interviews', 'Product assets', 'Mobile screens', 'Launch notes'][index]}</strong>
+                <strong>{['Mango plot', 'Fertilizer day', 'Drone survey', 'Carbon report'][index]}</strong>
               </article>
             </div>
           ))}
@@ -311,21 +311,21 @@ function Home() {
 
       <section className="smart page-section" id="dashboard">
         <div className="section-heading">
-          <h2>Smart task management<br />for growing teams</h2>
-          <p>Organize projects, assign tasks, and monitor progress with a smart<br />platform built to improve productivity and teamwork.</p>
+          <h2>Smart tree tracking<br />for growing forests</h2>
+          <p>Organize plantings, assign caretakers, and monitor survival with a smart<br />platform built to improve growth and teamwork.</p>
           <div className="button-row">
-            <Button onClick={() => openModal('trial')}>Get started free</Button>
-            <Button secondary onClick={() => openModal('sales')}>Talk to sales team</Button>
+            <Button onClick={() => openModal('trial')}>Start planting free</Button>
+            <Button secondary onClick={() => openModal('sales')}>Talk to our team</Button>
           </div>
         </div>
         <Dashboard />
       </section>
 
       <section className="final-cta" id="insight">
-        <span>BUILD BETTER, TOGETHER</span>
-        <h2>Make every project<br />feel effortless.</h2>
-        <p>Bring your people, tools and work together in one beautifully simple place.</p>
-        <Button onClick={() => openModal('trial')}>Start for free <ArrowIcon /></Button>
+        <span>GROW GREENER, TOGETHER</span>
+        <h2>Make every planting<br />feel effortless.</h2>
+        <p>Bring your planters, tools and trees together in one beautifully simple place.</p>
+        <Button onClick={() => openModal('trial')}>Plant for free <ArrowIcon /></Button>
       </section>
 
     </main>
@@ -339,6 +339,7 @@ const router = createBrowserRouter([{ Component: Layout, children: [
   { path: 'signup', element: <AccountPage mode="signup" /> },
   { path: 'signin', element: <AccountPage mode="signin" /> },
   { path: 'contact', Component: ContactPage },
+  ...(['privacy', 'terms', 'security', 'stories', 'careers'] as const).map(path => ({ path, element: <InformationPage kind={path} /> })),
   { path: '*', Component: NotFoundPage },
 ] }])
 
