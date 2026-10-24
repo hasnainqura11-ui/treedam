@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router'
 import { TreedamLogo } from './BrandIcons'
 import { TreePine, Trophy, Leaf, MapPin, ChartNoAxesColumn, TreeDeciduous } from 'lucide-react'
+import { MotionConfig } from 'motion/react'
+import { SiteMotion, luxuryTransition } from './SiteMotion'
 
 export type ModalType = 'trial' | 'sales' | 'demo' | null
 
@@ -35,8 +37,10 @@ export function Layout() {
   }
 
   return (
+    <MotionConfig reducedMotion="user" transition={luxuryTransition}>
     <ModalContext.Provider value={{ openModal }}>
-      <div className="min-h-screen bg-[#F3F4F6] text-[#111113] font-sans antialiased selection:bg-indigo-500 selection:text-white">
+      <div data-site-motion className="luxury-motion min-h-screen bg-[#F3F4F6] text-[#111113] font-sans antialiased selection:bg-indigo-500 selection:text-white">
+        <SiteMotion />
         {/* Main outer shell matching reference canvas */}
         <div className="max-w-[1440px] mx-auto px-2.5 sm:px-4 md:px-6 pt-2.5 sm:pt-4 pb-8">
           <Outlet />
@@ -225,6 +229,7 @@ export function Layout() {
         )}
       </div>
     </ModalContext.Provider>
+    </MotionConfig>
   )
 }
 

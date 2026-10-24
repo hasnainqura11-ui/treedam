@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 import { ArrowRight, Pause, Play, type LucideIcon } from 'lucide-react'
 import { TopNavbar } from './Layout'
+import { CinematicFilm } from './CinematicFilm'
+import { luxuryEase } from './SiteMotion'
 
 const mediaBase = `${import.meta.env.BASE_URL}media/`
 
@@ -13,11 +15,12 @@ export function PageFrame({ children }: { children: ReactNode }) {
 export function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const reduced = useReducedMotion()
   return <motion.div
+    data-motion-reveal
     className={className}
-    initial={reduced ? false : { opacity: 0, y: 20 }}
+    initial={reduced ? false : { opacity: 0, y: 12 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.12 }}
-    transition={{ duration: reduced ? 0 : 0.5, delay, ease: 'easeOut' }}
+    transition={{ type: 'tween', duration: reduced ? 0 : 0.85, delay, ease: luxuryEase }}
   >{children}</motion.div>
 }
 
@@ -60,40 +63,26 @@ const imageCredits = {
 }
 
 export function FieldMedia({ image = 'forest', film = false }: { image?: keyof typeof imageDescriptions; film?: boolean }) {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const inView = useInView(videoRef, { amount: 0.2 })
   const reduced = useReducedMotion()
   const [playing, setPlaying] = useState(false)
   const [userPaused, setUserPaused] = useState(false)
+  const [userStarted, setUserStarted] = useState(false)
   const [videoFailed, setVideoFailed] = useState(false)
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video || !film) return
-    if (inView && !reduced && !userPaused) {
-      void video.play().catch(() => setPlaying(false))
-    } else video.pause()
-  }, [inView, reduced, userPaused, film])
   const toggle = () => {
-    const video = videoRef.current
-    if (!video) return
-    if (video.paused) {
-      setUserPaused(false)
-      void video.play().catch(() => setVideoFailed(true))
-    } else {
-      setUserPaused(true)
-      video.pause()
-    }
+    setUserPaused(playing)
+    if (!playing) setUserStarted(true)
   }
   return <figure className="field-media">
-    {film && !videoFailed ? <video
-      ref={videoRef}
-      muted loop playsInline preload="none"
-      poster={`${mediaBase}forest.jpg`}
-      aria-label="Sunlight moving through a tranquil forest"
-      onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}
-      onError={() => setVideoFailed(true)}
-    ><source src={`${mediaBase}forest-film.mp4`} type="video/mp4" /></video>
-      : <img src={`${mediaBase}${image}.jpg`} alt={imageDescriptions[image]} loading="lazy" width={1600} height={900} />}
+    {film && !videoFailed ? <CinematicFilm
+      paused={userPaused} userStarted={userStarted}
+      onPlayingChange={setPlaying} onError={() => setVideoFailed(true)}
+    />
+      : <motion.img
+        src={`${mediaBase}${image}.jpg`} alt={imageDescriptions[image]} loading="lazy" width={1600} height={900}
+        initial={reduced ? false : { scale: 1.035 }}
+        whileInView={{ scale: 1 }} viewport={{ once: true, amount: .2 }}
+        transition={{ type: 'tween', duration: reduced ? 0 : .95, ease: luxuryEase }}
+      />}
     <figcaption>
       <span>{film && !videoFailed ? 'A living forest, worth protecting' : imageDescriptions[image]}<small>{film && !videoFailed ? 'Forest footage / Mixkit' : imageCredits[image]}</small></span>
       {film && !videoFailed && <button type="button" className="btn btn-secondary" onClick={toggle} aria-label={playing ? 'Pause forest film' : 'Play forest film'}>
@@ -153,7 +142,7 @@ export function AnimatedNumber({ value, prefix = '', suffix = '' }: { value: num
     let start: number | undefined
     const tick = (time: number) => {
       start ??= time
-      const fraction = Math.min((time - start) / 1100, 1)
+      const fraction = Math.min((time - start) / 1000, 1)
       setNumber(Math.round(value * (1 - (1 - fraction) ** 3)))
       if (fraction < 1) frame = requestAnimationFrame(tick)
     }
@@ -161,4 +150,10 @@ export function AnimatedNumber({ value, prefix = '', suffix = '' }: { value: num
     return () => cancelAnimationFrame(frame)
   }, [visible, reduced, value])
   return <span ref={ref} aria-label={`${prefix}${value}${suffix}`}><span aria-hidden="true">{prefix}{reduced ? value : number}{suffix}</span></span>
+}
+
+export function CountUpText({ text }: { text: string }) {
+  const match = text.match(/^(\D*)(\d+)(.*)$/)
+  if (!match) return text
+  return <AnimatedNumber value={Number(match[2])} prefix={match[1]} suffix={match[3]} />
 }
