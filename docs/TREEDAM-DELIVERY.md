@@ -1,7 +1,7 @@
 # TREEDAM demo delivery
 
 ## Current integration status
-- The platform acknowledged Supabase connection, but supplied no `utils/supabase/info.tsx`, Supabase function files, Supabase environment variables, SQL execution tools, or project resources to this workspace.
+- During the initial migration, the Supabase connection files were unavailable. The platform has since generated `utils/supabase/info.tsx` and Supabase Edge Function scaffolding; those files alone do not confirm app schema provisioning or cloud integration.
 - Remote schema creation, seeding, cloud authentication and Storage cannot honestly be reported as executed.
 - The runnable demo uses explicitly labeled browser-local workspace data. Photos are kept as blobs in IndexedDB; demo records are kept in localStorage.
 - Supabase uses its official auth/client SDK. A schema and adapter are supplied, not a second custom authentication implementation.
@@ -35,3 +35,10 @@
 - Campaign creation/assignment, government audit completion, frozen competition results, demo certificates, CSR impact, PDF and CSV exports passed.
 - Created test records persisted after navigation and reload; a reviewed demo plot reflected its audited count of 69, not its full planted count of 75.
 - Cloud Supabase operations were not exercised or claimed as passing.
+
+## Browser-extension hydration compatibility
+- Reproduced the reported body-attribute warning by injecting `__processed_*`, `bis_status` and `bis_frame_id` before React hydration. Clean-browser baseline: zero warnings; extension-like baseline: one warning.
+- Scoped `suppressHydrationWarning` to the frontend body only. After the fix, both clean and extension-like cases hydrated without warnings; the injected attributes remained intact and header navigation stayed interactive.
+- A deliberately mismatched nested heading still produced a hydration warning, confirming that application-level checks remain active. SSR was not disabled.
+- Excluded the generated Deno-only `supabase/functions/**` folder from the Next.js TypeScript project. Generated Edge Function files were not changed; their Deno imports are not Node/Next imports.
+- Next.js typecheck, managed production verification and browser hydration checks for all 35 static/SSG public routes passed again. The static interface remains free of autoplay videos and running animations.
