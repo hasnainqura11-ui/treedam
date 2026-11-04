@@ -7,7 +7,7 @@ import { TreedamLogo } from './BrandIcons'
 import { TreeDashboard } from './TreeDashboard'
 import { MapPin, Camera, Leaf, ChartNoAxesColumn, type LucideIcon } from 'lucide-react'
 import { ContentPage, PricingPage, AccountPage, ContactPage, NotFoundPage, InformationPage } from './Pages'
-import { CountUpText } from './PageSections'
+import { StatText } from './PageSections'
 
 type ModalKind = 'trial' | 'sales' | 'signin' | 'contact' | null
 
@@ -213,7 +213,7 @@ export default function LandingPage() {
           ['60 sec', 'to GPS-tag one newly planted tree.'],
           ['30 days', 'First survival proof arrives within thirty days.'],
         ].map(([value, label]) => (
-          <article key={value}><b><CountUpText text={value} /></b><p>{label}</p></article>
+          <article key={value}><b><StatText text={value} /></b><p>{label}</p></article>
         ))}
       </section>
 

@@ -17,7 +17,6 @@
 }
 .treedam-app { color: var(--color-app-ink); font-family:var(--font-sans); }
 .treedam-app :is(h1,h2,h3) { text-wrap: balance; }
-.treedam-app .product-card { transition: box-shadow .85s ease-out,translate .85s ease-out; }
 .treedam-app .btn { min-height: 38px; }
 .treedam-app .product-table { width:100%; border-collapse:collapse; text-align:left; font-size:12px; }
 .treedam-app .product-table :is(th,td) { padding:14px 12px; border-bottom:1px solid var(--color-app-border); }

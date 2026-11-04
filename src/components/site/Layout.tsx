@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from './routing'
 import { TreedamLogo } from './BrandIcons'
 import { TreePine, Trophy, Leaf, MapPin, ChartNoAxesColumn, TreeDeciduous } from 'lucide-react'
-import { MotionConfig } from 'motion/react'
-import { SiteMotion, luxuryTransition } from './SiteMotion'
 
 export type ModalType = 'trial' | 'sales' | 'demo' | null
 
@@ -29,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setMobileMenuOpen(false)
     setSolutionsOpen(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'auto' })
   }, [location.pathname])
 
   const openModal = (kind: ModalType) => {
@@ -38,10 +36,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <MotionConfig reducedMotion="user" transition={luxuryTransition}>
     <ModalContext.Provider value={{ openModal }}>
-      <div data-site-motion className="luxury-motion min-h-screen bg-[#F3F4F6] text-[#111113] font-sans antialiased selection:bg-indigo-500 selection:text-white">
-        <SiteMotion />
+      <div className="min-h-screen bg-[#F3F4F6] text-[#111113] font-sans antialiased selection:bg-indigo-500 selection:text-white">
         {/* Main outer shell matching reference canvas */}
         <div className="max-w-[1440px] mx-auto px-2.5 sm:px-4 md:px-6 pt-2.5 sm:pt-4 pb-8">
           {children}
@@ -145,7 +141,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             onMouseDown={() => setModal(null)}
           >
             <div
-              className="bg-white rounded-[22px] border border-[#EAECEF] shadow-2xl max-w-[420px] w-full p-7 relative animate-in fade-in zoom-in-95 duration-200"
+              className="bg-white rounded-[22px] border border-[#EAECEF] shadow-2xl max-w-[420px] w-full p-7 relative"
               onMouseDown={(e) => e.stopPropagation()}
             >
               <button
@@ -230,7 +226,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         )}
       </div>
     </ModalContext.Provider>
-    </MotionConfig>
   )
 }
 
@@ -487,7 +482,7 @@ export function TopNavbar() {
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-2 rounded-[18px] bg-white border border-[#EAEAEA] shadow-xl p-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="lg:hidden mt-2 rounded-[18px] bg-white border border-[#EAEAEA] shadow-xl p-4 space-y-2">
           <div className="grid grid-cols-1 gap-1">
             <Link to="/" className="px-3 py-2.5 rounded-xl text-[13px] font-medium hover:bg-zinc-50">
               Home

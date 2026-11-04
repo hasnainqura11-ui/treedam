@@ -6,7 +6,7 @@ import { X, Sprout, LoaderCircle } from 'lucide-react'
 import { resolvePhoto } from '@/lib/treedam/photos'
 
 export function Button({children,variant='primary',className='',busy=false,...props}:ButtonHTMLAttributes<HTMLButtonElement>&{variant?:'primary'|'secondary';busy?:boolean}) {
-  return <button {...props} disabled={props.disabled||busy} className={`btn ${variant==='primary'?'btn-primary':'btn-secondary'} disabled:cursor-not-allowed disabled:opacity-50 ${className}`}>{busy&&<LoaderCircle size={15} className="animate-spin" />}{children}</button>
+  return <button {...props} disabled={props.disabled||busy} className={`btn ${variant==='primary'?'btn-primary':'btn-secondary'} disabled:cursor-not-allowed disabled:opacity-50 ${className}`}>{busy&&<LoaderCircle size={15} />}{children}</button>
 }
 export function Card({children,className='',...props}:React.HTMLAttributes<HTMLDivElement>) {
   return <div {...props} className={`product-card rounded-2xl border border-app-border bg-white p-5 shadow-panel ${className}`}>{children}</div>
@@ -61,7 +61,7 @@ export function Modal({title,children,onClose,wide=false}:{title:string;children
     document.addEventListener('keydown',key)
     return()=>{document.body.style.overflow=overflow;document.removeEventListener('keydown',key);previous?.focus()}
   },[])
-  return createPortal(<div className="treedam-app luxury-motion fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/30 p-4 backdrop-blur-sm" onMouseDown={event=>{if(event.target===event.currentTarget)onClose()}}>
+  return createPortal(<div className="treedam-app fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/30 p-4 backdrop-blur-sm" onMouseDown={event=>{if(event.target===event.currentTarget)onClose()}}>
     <div ref={ref} role="dialog" aria-modal="true" aria-labelledby={id} className={`my-auto max-h-[90dvh] w-full overflow-y-auto rounded-3xl bg-white p-6 shadow-float ${wide?'max-w-3xl':'max-w-lg'}`}>
       <div className="mb-6 flex items-center justify-between gap-4"><h2 id={id} className="text-xl font-semibold tracking-tight">{title}</h2><Button variant="secondary" aria-label="Close dialog" onClick={onClose}><X size={16} /></Button></div>{children}
     </div>

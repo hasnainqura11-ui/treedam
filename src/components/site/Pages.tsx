@@ -4,7 +4,7 @@ import { Link } from './routing'
 import { ArrowRight, Check, Layers, Users, Zap } from 'lucide-react'
 import { informationPages } from './treedamContent'
 import { MarketingPage, type MarketingKind } from './MarketingPages'
-import { PageFrame as PageShell, PageHero, FeatureSection, EditorialSection, PageCTA, Reveal } from './PageSections'
+import { PageFrame as PageShell, PageHero, FeatureSection, EditorialSection, PageCTA, ContentBlock } from './PageSections'
 export { PricingPage, ContactPage } from './MarketingPages'
 
 export function ContentPage({ kind }: { kind: string }) {
@@ -34,13 +34,13 @@ export function InformationPage({ kind }: { kind: keyof typeof informationPages 
   return <PageShell>
     <PageHero eyebrow={kind.toUpperCase()} title={page.title} text={page.description} image={kind === 'stories' || kind === 'careers' ? 'planter' : 'forest'} />
     <section className="page-section">
-      <Reveal className="section-heading"><h2>{kind === 'stories' ? 'Every forest starts with people.' : kind === 'careers' ? 'Purpose, rooted in survival.' : 'Clear principles. Responsible planting.'}</h2></Reveal>
+      <ContentBlock className="section-heading"><h2>{kind === 'stories' ? 'Every forest starts with people.' : kind === 'careers' ? 'Purpose, rooted in survival.' : 'Clear principles. Responsible planting.'}</h2></ContentBlock>
       <div className="detail-grid page-detail-grid">
         {page.sections.map(([title, text], index) => {
           const Icon = icons[index % icons.length]
-          return <Reveal key={title} delay={(index % 3) * .06}><article className="page-feature-card">
+          return <ContentBlock key={title}><article className="page-feature-card">
             <span className="detail-icon"><Icon size={23} /></span><h2>{title}</h2><p>{text}</p>
-          </article></Reveal>
+          </article></ContentBlock>
         })}
       </div>
       {'note' in page && <p className="demo-note">{page.note}</p>}

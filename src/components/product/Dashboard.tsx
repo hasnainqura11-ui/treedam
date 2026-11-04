@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useCallback,useEffect,useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { MotionConfig,motion,useReducedMotion } from 'motion/react'
 import { ArrowLeft,ArrowUpRight,Bell,Building2,Camera,Check,FileDown,HeartHandshake,LayoutDashboard,Leaf,LogOut,MapPin,Menu,Plus,Search,Settings,ShieldCheck,Sprout,Trophy,Users,X,Droplets,Landmark } from 'lucide-react'
 import { cloudAvailable,treedamConfig } from '@/config/treedam'
 import { roleNames,roles,type Role } from '@/lib/treedam/types'
@@ -34,10 +33,10 @@ const descriptions:Record<string,string>={trees:'Every tree and plot, from first
 export function Dashboard({section='overview'}:{section?:string}) {
   const store=useWorkspace(),{profile,workspace,ready,enterDemo,signOut,message,error,dismissError}=store
   const [mobile,setMobile]=useState(false),[search,setSearch]=useState(false),[query,setQuery]=useState(''),[alerts,setAlerts]=useState(false),[selected,setSelected]=useState('')
-  const router=useRouter(),reduced=useReducedMotion()
+  const router=useRouter()
   const closeDetails=useCallback(()=>setSelected(''),[])
   useEffect(()=>{setMobile(false);setAlerts(false);setSelected('')},[section])
-  if(!ready)return <main className="treedam-app min-h-screen bg-app-canvas p-6"><div className="mx-auto max-w-6xl animate-pulse space-y-5"><div className="h-16 rounded-2xl bg-white" /><div className="grid grid-cols-2 gap-4">{[0,1,2,3].map(i=><div key={i} className="h-36 rounded-2xl bg-white" />)}</div><p className="text-sm text-app-muted">Opening your planting workspace…</p></div></main>
+  if(!ready)return <main className="treedam-app min-h-screen bg-app-canvas p-6"><div className="mx-auto max-w-6xl space-y-5"><div className="h-16 rounded-2xl bg-white" /><div className="grid grid-cols-2 gap-4">{[0,1,2,3].map(i=><div key={i} className="h-36 rounded-2xl bg-white" />)}</div><p className="text-sm text-app-muted">Opening your planting workspace…</p></div></main>
   if(!profile||!workspace)return <main className="treedam-app flex min-h-screen items-center justify-center bg-app-canvas p-5"><Card className="w-full max-w-2xl p-8"><Link href="/"><Image src="/treedam-logo.png" alt="TREEDAM" width={112} height={27} className="mb-8 h-auto w-28" /></Link><Badge tone="blue">Interactive demo</Badge><h1 className="mb-3 mt-5 text-3xl font-semibold">Choose your view of a greener future.</h1><p className="mb-6 text-sm leading-relaxed text-app-muted">Explore one shared, browser-local demo through four roles. No account or password is required. Cloud authentication is a separate Supabase flow.</p><div className="grid gap-3 sm:grid-cols-2">{roles.map(role=><Button key={role} variant="secondary" onClick={()=>enterDemo(role)}>{roleNames[role]}<ArrowUpRight size={14} /></Button>)}</div><div className="mt-8 flex gap-4 text-xs text-app-muted"><Link href="/signin" className="underline">Supabase sign in</Link><Link href="/" className="underline">Back to website</Link></div></Card></main>
   const current=items.find(item=>item.id===section)||items[0],allowed=current.roles.includes(profile.role as never)
   const title=section==='overview'?(profile.role==='individual'?'Your forest, at a glance.':profile.role==='ngo'?'Every campaign. Lasting growth.':profile.role==='government'?'A clearer view of your district.':'Your greener promise, backed by proof.'):current.label
@@ -58,7 +57,7 @@ export function Dashboard({section='overview'}:{section?:string}) {
   else if(section==='reports')content=<ReportsView />
   else if(section==='settings')content=<WorkspaceSettings />
   else content=<Overview onSelect={setSelected} />
-  return <MotionConfig reducedMotion="user" transition={{type:'tween',duration:.8,ease:[.16,1,.3,1]}}><div className="treedam-app luxury-motion min-h-screen bg-app-canvas font-sans">
+  return <div className="treedam-app min-h-screen bg-app-canvas font-sans">
     <div className="mx-auto grid max-w-[1680px] gap-4 p-3 lg:grid-cols-[220px_minmax(0,1fr)] lg:p-4">
       {mobile&&<div className="fixed inset-0 z-30 bg-black/25 backdrop-blur-sm lg:hidden" onClick={()=>setMobile(false)} />}
       <aside className={`${mobile?'flex':'hidden'} fixed inset-y-3 left-3 z-40 w-60 flex-col rounded-3xl border border-app-border bg-white p-4 shadow-panel lg:sticky lg:top-4 lg:flex lg:h-[calc(100dvh-32px)] lg:w-auto`} aria-label="Workspace sidebar">
@@ -74,14 +73,14 @@ export function Dashboard({section='overview'}:{section?:string}) {
       <div className="mb-5"><Notice>{profile.provider==='demo'?<><strong>Demo workspace.</strong> Changes are saved only in this browser, not Supabase. Switch roles to explore one shared demo.</>:<><strong>Supabase demo workspace.</strong> Records are private to your account; verification remains simulated.</>} Map, weather, carbon assumptions and AI outcomes are demonstrations, not real field evidence.</Notice></div>
       {error&&<div className="mb-5"><Notice tone="rose">{error}<Button variant="secondary" className="ml-3" onClick={dismissError}>Dismiss</Button></Notice></div>}
       <div className="mb-6 flex flex-wrap items-start justify-between gap-4"><div><p className="eyebrow">{section==='overview'?`WELCOME BACK, ${profile.name.split(' ')[0].toUpperCase()}`:'YOUR TREE SURVIVAL WORKSPACE'}</p><h1 className="mb-2 mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h1><p className="max-w-xl text-sm leading-relaxed text-app-muted">{section==='overview'?'A little care, clear evidence, and a forest worth protecting.':descriptions[section]}</p></div>{section!=='add-tree'&&<Link href="/app/add-tree" className="btn btn-primary"><Plus size={15} />Add a tree</Link>}</div>
-      <motion.div key={section+profile.role} initial={reduced?false:{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:.8,ease:[.16,1,.3,1]}}>{content}</motion.div>
+      <div key={section+profile.role}>{content}</div>
       <footer className="flex flex-wrap items-center justify-between gap-3 px-1 py-6 text-xs text-app-muted"><span>© 2026 TREEDAM · Grow forests, breathe fresh air.</span><span>Demo data. Real planting needs real proof.</span></footer>
       </main>
     </div>
     {message&&<div role="status" className="fixed bottom-5 left-5 right-5 z-50 mx-auto flex max-w-lg items-center gap-3 rounded-xl border border-app-border bg-white p-4 text-sm shadow-float"><Check size={18} className="shrink-0 text-app-green" />{message}</div>}
     {selected&&<TreeDetails treeId={selected} onClose={closeDetails} />}
     {search&&<Modal title="Search your forest" onClose={()=>setSearch(false)}><Input autoFocus aria-label="Search workspace records" placeholder="Search species, planter or location" value={query} onChange={event=>setQuery(event.target.value)} /><div className="mt-4 max-h-80 space-y-2 overflow-y-auto">{searchResults.length?searchResults.map(tree=><Button className="w-full justify-between" variant="secondary" key={tree.id} onClick={()=>{setSearch(false);setSelected(tree.id)}}><span>{tree.species} · {tree.location}</span><ArrowUpRight size={14} /></Button>):<Empty title="No matching trees" text="Try another species, planter or location." />}</div></Modal>}
-  </div></MotionConfig>
+  </div>
 }
 
 function WorkspaceSettings() {

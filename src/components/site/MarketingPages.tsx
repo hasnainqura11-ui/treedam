@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from './routing'
 import { ArrowRight, Camera, Check, Droplets, GraduationCap, Heart, Leaf, MapPin, ShieldCheck, Sprout, Trees, Trophy, Users } from 'lucide-react'
 import { TreeDashboard } from './TreeDashboard'
-import { AnimatedNumber, EditorialSection, FeatureSection, PageActions, PageCTA, PageFrame, PageHero, Reveal, type Feature } from './PageSections'
+import { StatNumber, EditorialSection, FeatureSection, PageActions, PageCTA, PageFrame, PageHero, ContentBlock, type Feature } from './PageSections'
 
 const platformFeatures: Feature[] = [
   { title: 'Every tree, GPS-tagged', text: 'Record a planting photo and its location so each tree has a place in your plantation records.', icon: MapPin },
@@ -43,8 +43,8 @@ export function MarketingPage({ kind }: { kind: MarketingKind }) {
     {kind === 'platform' && <>
       <FeatureSection title="Tree survival, simplified for every planter" text="Four connected ways to keep your planting promise." items={platformFeatures} twoColumns />
       <section className="smart page-section">
-        <Reveal className="section-heading"><h2>Your whole plantation,<br />in one clear view.</h2><p>Organize plantings, assign caretakers, and monitor survival with a smart platform built to improve growth and teamwork.</p><PageActions /></Reveal>
-        <Reveal><TreeDashboard /></Reveal>
+        <ContentBlock className="section-heading"><h2>Your whole plantation,<br />in one clear view.</h2><p>Organize plantings, assign caretakers, and monitor survival with a smart platform built to improve growth and teamwork.</p><PageActions /></ContentBlock>
+        <ContentBlock><TreeDashboard /></ContentBlock>
       </section>
     </>}
     {kind === 'solutions' && <>
@@ -63,12 +63,12 @@ export function MarketingPage({ kind }: { kind: MarketingKind }) {
     </>}
     {kind === 'impact' && <>
       <section className="page-section">
-        <Reveal className="section-heading"><h2>Planting matters.<br />Survival makes the difference.</h2><p>Keep the challenge, the opportunity, and the purpose in view.</p></Reveal>
-        <Reveal className="stats page-stats">
-          <article><b><AnimatedNumber value={44} suffix="%" /></b><p>of planted trees die unverified.</p></article>
-          <article><b><AnimatedNumber value={22} prefix="$" suffix="/t" /></b><p>Verified tree carbon is worth $22 per ton.</p></article>
+        <ContentBlock className="section-heading"><h2>Planting matters.<br />Survival makes the difference.</h2><p>Keep the challenge, the opportunity, and the purpose in view.</p></ContentBlock>
+        <ContentBlock className="stats page-stats">
+          <article><b><StatNumber value={44} suffix="%" /></b><p>of planted trees die unverified.</p></article>
+          <article><b><StatNumber value={22} prefix="$" suffix="/t" /></b><p>Verified tree carbon is worth $22 per ton.</p></article>
           <article><b>Fresh air</b><p>Every surviving tree gives fresh air.</p></article>
-        </Reveal>
+        </ContentBlock>
         <p className="demo-note">Carbon values are indicative, not a guaranteed payment. Credits require applicable verification and certification.</p>
       </section>
       <EditorialSection eyebrow="EVIDENCE, NOT JUST A PLANTING TOTAL" title="Proof that funders can follow." text="Connect every planting to a location and a first photo. Add care records and follow-up photos, review the evidence, and share a clear survival report. Supporters can see what was planted, what was checked, and what is still growing." image="forest" />
@@ -90,15 +90,15 @@ export function PricingPage() {
   return <PageFrame>
     <PageHero eyebrow="PRICING" title="A plan for every planter. Room for every forest." text="Start with a seedling, grow with your team, and choose the level of tree tracking your plantation needs." image="planting" />
     <section className="page-section">
-      <Reveal className="section-heading"><h2>Simple plans. A lasting purpose.</h2><p>Choose a starting point for your planting community.</p><div className="billing-toggle"><button aria-pressed={!annual} onClick={() => setAnnual(false)}>Monthly</button><button aria-pressed={annual} onClick={() => setAnnual(true)}>Yearly · Save 20%</button></div></Reveal>
+      <ContentBlock className="section-heading"><h2>Simple plans. A lasting purpose.</h2><p>Choose a starting point for your planting community.</p><div className="billing-toggle"><button aria-pressed={!annual} onClick={() => setAnnual(false)}>Monthly</button><button aria-pressed={annual} onClick={() => setAnnual(true)}>Yearly · Save 20%</button></div></ContentBlock>
       <div className="detail-grid pricing-grid page-detail-grid">
-        {['Planter', 'NGO', 'Institution'].map((name, i) => <Reveal key={name} delay={i * .06}><article className={i === 1 ? 'featured-plan' : ''}>
+        {['Planter', 'NGO', 'Institution'].map((name, i) => <ContentBlock key={name}><article className={i === 1 ? 'featured-plan' : ''}>
           {i === 1 && <span className="eyebrow">FOR PLANTING TEAMS</span>}<h2>{name}</h2>
           <p>{['For individual planters and their first trees.', 'For NGOs coordinating care and survival evidence.', 'For institutions managing multiple planting drives.'][i]}</p>
           <div className="price">{i === 0 ? 'Free' : i === 1 ? `$${annual ? 12 : 15}` : 'Custom'}<small>{i === 0 ? 'Start your planting journey' : i === 1 ? `per planter / month · ${annual ? 'billed yearly' : 'billed monthly'}` : 'A plan shaped around your plantation'}</small></div>
           <Link className={`btn ${i === 1 ? 'btn-primary' : 'btn-secondary'}`} to={i === 0 ? '/signup' : '/contact'}>{i === 0 ? 'Start planting free' : 'Talk to our team'}</Link>
           <ul>{['Tree records and survival tracking', i === 0 ? 'Individual tree-care reminders' : 'Coordinated caretaker teams', i === 2 ? 'Multi-drive survival reporting' : 'Planting and follow-up photos', i === 2 ? 'Plantation support & onboarding' : 'Clear survival records'].map(item => <li key={item}><Check size={15} />{item}</li>)}</ul>
-        </article></Reveal>)}
+        </article></ContentBlock>)}
       </div>
       <p className="demo-note">Illustrative plans and NGO pricing. Confirm availability, limits, and pricing with our team before subscribing.</p>
     </section>
@@ -116,8 +116,8 @@ export function ContactPage() {
   return <PageFrame>
     <PageHero eyebrow="CONTACT" title="A greener future starts with a hello." text="Tell us about your planting drive, tree-care needs, or survival verification goals. Let’s find the right path for your forest." image="planter" />
     <section className="account-layout" id="contact-form">
-      <Reveal><span className="eyebrow">LET’S GROW GREENER, TOGETHER</span><h2 className="contact-intro-title">One conversation.<br />A lasting planting promise.</h2><p className="contact-intro-copy">Whether you care for one seedling or coordinate a whole department, we’d love to hear what you’re planting.</p><div className="account-proof"><Leaf size={20} />Tree tracking, care plans & survival evidence</div></Reveal>
-      <Reveal className="account-card"><h2>Contact us</h2><p>We’d love to hear what you’re planting.</p>
+      <ContentBlock><span className="eyebrow">LET’S GROW GREENER, TOGETHER</span><h2 className="contact-intro-title">One conversation.<br />A lasting planting promise.</h2><p className="contact-intro-copy">Whether you care for one seedling or coordinate a whole department, we’d love to hear what you’re planting.</p><div className="account-proof"><Leaf size={20} />Tree tracking, care plans & survival evidence</div></ContentBlock>
+      <ContentBlock className="account-card"><h2>Contact us</h2><p>We’d love to hear what you’re planting.</p>
         <form onSubmit={event => { event.preventDefault(); setSubmitted(true) }}>
           <label>Full name<input required autoComplete="name" placeholder="Your name" /></label>
           <label>Email address<input required type="email" autoComplete="email" placeholder="you@example.com" /></label>
@@ -127,7 +127,7 @@ export function ContactPage() {
           {submitted && <p className="form-notice" role="status">Preview only: your message has not been sent. A backend connection is needed to receive submissions.</p>}
           <p className="demo-note">Preview form — messages are not yet delivered.</p>
         </form>
-      </Reveal>
+      </ContentBlock>
     </section>
     <FeatureSection title="Rooted in Skardu. Open to every planter." items={[
       { title: 'Our roots', text: 'Skardu, Gilgit-Baltistan, Pakistan — where TREEDAM’s tree-survival story began.', icon: MapPin },

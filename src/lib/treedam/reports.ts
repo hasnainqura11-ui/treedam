@@ -4,7 +4,7 @@ import { treedamConfig } from '@/config/treedam'
 export function downloadCsv(trees:Tree[]) {
   const escape=(value:unknown)=> {
     const text=String(value??'')
-    return '"'+(/^\s*[=+@-]/.test(text)?"'"+text:text).replaceAll('"','""')+'"'
+    return '"'+(typeof value==='string'&&/^\s*[=+@-]/.test(text)?"'"+text:text).replaceAll('"','""')+'"'
   }
   const rows=[['Species','Planter','Planted count','Demo verified survivors','Status','Latitude','Longitude','Planted at','Demo record'],...trees.map(t=>[t.species,t.planterName,t.quantity,t.verifiedCount,t.status,t.lat,t.lng,t.plantedAt,'Yes — simulated'])]
   const url=URL.createObjectURL(new Blob([rows.map(r=>r.map(escape).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}))

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
-@import './site-motion.css';
 @import './product.css';
 
 @layer base {
@@ -14,7 +13,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
@@ -101,7 +100,6 @@
 .section-heading p { margin-top: 18px; font-size: 13px; line-height: 1.7; color: #777982; }
 .button-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 17px; border-radius: 9px; font-size: 12px; font-weight: 500; transition: transform .2s,background .2s; }
-.btn:hover { transform: translateY(-2px); }
 .btn-primary { background: #0f0f12; color: white; border: 1px solid #0f0f12; }
 .btn-secondary { background: white; border: 1px solid #eaeaec; color: #242428; }
 .benefit-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 50px 0; }
@@ -187,7 +185,7 @@
 }
 .treedam-pages .page-feature-card,
 .treedam-pages .pricing-grid article {
-  @apply h-full transition-transform duration-200 hover:-translate-y-1;
+  @apply h-full;
 }
 .treedam-pages .benefit-grid > div:nth-child(even) article {
   border-right: 0;
@@ -220,14 +218,12 @@
   @apply mt-5 text-sm leading-relaxed text-slate-500;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+/* Keep the frontend static: no entrance effects, loops, parallax or animated UI. */
+.static-site,
+.static-site *,
+.static-site *::before,
+.static-site *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
 }
