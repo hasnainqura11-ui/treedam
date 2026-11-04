@@ -1,0 +1,32 @@
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-app-canvas: #f3f4f6;
+  --color-app-ink: #111113;
+  --color-app-muted: #72737a;
+  --color-app-border: #ececee;
+  --color-app-indigo: #4f5eff;
+  --color-app-green: #18a96b;
+  --color-app-rose: #e6499b;
+  --color-app-purple: #625df5;
+  --color-app-blue-soft: #eef5ff;
+  --color-app-green-soft: #e9fbf3;
+  --color-app-rose-soft: #fdf0f7;
+  --color-app-violet-soft: #f3f0ff;
+  --shadow-panel: 0 6px 24px rgb(0 0 0 / .03);
+  --shadow-float: 0 12px 32px -8px rgb(30 64 175 / .14);
+}
+.treedam-app { color: var(--color-app-ink); font-family:var(--font-sans); }
+.treedam-app :is(h1,h2,h3) { text-wrap: balance; }
+.treedam-app .product-card { transition: box-shadow .85s ease-out,translate .85s ease-out; }
+.treedam-app .btn { min-height: 38px; }
+.treedam-app .product-table { width:100%; border-collapse:collapse; text-align:left; font-size:12px; }
+.treedam-app .product-table :is(th,td) { padding:14px 12px; border-bottom:1px solid var(--color-app-border); }
+.treedam-app .product-table th { color:var(--color-app-muted); font-size:10px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.treedam-app .product-table tbody tr:last-child td { border-bottom:0; }
+.treedam-app .product-table tbody tr:hover { background:var(--color-app-blue-soft); }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .treedam-app .product-card:hover { box-shadow:var(--shadow-float); }
+}
+@media print {
+  .treedam-app [data-no-print] { display:none !important; }
+}

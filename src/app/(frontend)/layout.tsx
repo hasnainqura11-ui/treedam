@@ -7,6 +7,7 @@ import {
   sanitizeHtmlAttribute,
 } from "@/lib/make-site-settings"
 import "./styles.css"
+import { WorkspaceProvider } from '@/components/product/WorkspaceProvider'
 
 const defaultTitle = "figma-make-app"
 const title = makeSiteSettings.title ?? defaultTitle
@@ -29,8 +30,10 @@ export const metadata: Metadata = {
     makeSiteSettings.robots?.index === false
       ? { follow: false, index: false }
       : undefined,
-  icons: favicon ? { icon: favicon } : undefined,
+  icons: favicon ? { icon: favicon, apple: '/site-icon.png' } : undefined,
   openGraph: {
+    type: 'website',
+    siteName: 'TREEDAM',
     title,
     description,
     images: socialImage ? [socialImage] : undefined,
@@ -38,6 +41,8 @@ export const metadata: Metadata = {
   twitter: socialImage
     ? {
         card: "summary_large_image",
+        title,
+        description,
         images: [socialImage],
       }
     : undefined,
@@ -66,7 +71,7 @@ export default function RootLayout({
           </a>
         )}
         <div id="root" tabIndex={-1}>
-          {children}
+          <WorkspaceProvider>{children}</WorkspaceProvider>
         </div>
         {googleAnalyticsId && (
           <>

@@ -1,1 +1,17 @@
-{}
+{
+  "description": "Plant trees and prove they survive. TREEDAM offers GPS-tagged planting, AI survival checks and care reminders for planters, NGOs and forest departments.",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  },
+  "title": "TREEDAM | Grow Forests, Breathe Fresh Air",
+  "icons": {
+    "icon": "/favicon.ico"
+  },
+  "openGraph": {
+    "image": "/treedam-logo.png"
+  }
+}
